@@ -17,10 +17,12 @@ class Testmap : Base, MapController
             auto addTarget = _map.parent;
             auto camera = new Camera(5.0);
             addTarget.addChild(camera);
-            auto trigg = new Trigger!Sprite();
+            auto trigg = new StreamTrigger!Sprite("map.testmap",addTarget);
+            trigg.loadOffset(vec2(-10.0,0.0));
             trigg.triggerMode = AbstractTrigger.TriggerMode.once;
             trigg.sizeMode = Entity.SizeMode.rect;
-            trigg.size = vec2(1.0,1.0);
+            trigg.size = vec2(0.1,0.1);
+            trigg.pos = _map.toWorldPos(vec2(5.0,0.0));
             addTarget.addChild(trigg);
 
             auto cursor = new WorldCursor();
@@ -33,7 +35,7 @@ class Testmap : Base, MapController
 
             auto m = new Music("music.intoTheMenu");
             addTarget.addChild(m);
-            addTarget.addChild(new NoSDLEventDebugger());
+            //addTarget.addChild(new NoSDLEventDebugger());
             m.play();
         }
     }
