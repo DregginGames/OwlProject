@@ -26,17 +26,18 @@ class Testmap : Base, MapController
             addTarget.addChild(trigg);
 
             auto cursor = new WorldCursor();
-            auto s2 = new Sprite("texture.test");
+            auto s2 = new AnimatedSprite("animation.walk","tileset.testplayer");
             s2.positionMode = Entity.PositionMode.parentBound;
             s2.sizeMode = Entity.SizeMode.rect;
             s2.size = vec2(1.0,1.0);
+            s2.play("left");
             cursor.addChild(s2);
             camera.addChild(cursor);
 
             auto m = new Music("music.intoTheMenu");
             addTarget.addChild(m);
             //addTarget.addChild(new NoSDLEventDebugger());
-            m.play();
+            //m.play();
         }
     }
     

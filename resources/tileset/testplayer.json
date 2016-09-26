@@ -1,0 +1,6 @@
+{
+	"texture": "texture.gen_char_sheet",
+	"xdim": 3,
+	"ydim": 4,
+	"tilesize": [0.5,1.0]
+}
