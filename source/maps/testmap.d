@@ -6,7 +6,7 @@ import derelict.sdl2.sdl;
 import derelict.sdl2.mixer;
 
 import d2d.core.base;
-import d2d.core.dbg.eventdebug;
+import d2d.core.save;
 import d2d.game;
 
 class Testmap : Base, MapController
@@ -36,6 +36,8 @@ class Testmap : Base, MapController
 
             auto m = new Music("music.intoTheMenu");
             addTarget.addChild(m);
+            storeSaveValue("testint",1234);
+            doSave("testsave");
             //addTarget.addChild(new NoSDLEventDebugger());
             //m.play();
         }
