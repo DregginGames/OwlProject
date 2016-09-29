@@ -1,6 +1,6 @@
 {
     "_saveData": {
-        "testint": "1234"
+        "testint": 1234
     },
     "_saveRestoreHandlers": []
 }

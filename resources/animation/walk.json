@@ -1,23 +1,122 @@
 {
 	"sequences": [
 		{
-			"name": "left",
+			"name": "down",
 			"frames": [
 				{
-					"length": 0.333,
+					"length": 0.25,
+					"id": 0
+				},
+				{
+					"length": 0.25,
+					"id": 1
+				},
+				{
+					"length": 0.25,
+					"id": 0
+				},
+				{
+					"length": 0.25,
+					"id": 2
+				}
+			]
+		},
+		{
+			"name": "downIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 0
+				}
+			]
+		},
+		{
+			"name": "up",
+			"frames": [
+				{
+					"length": 0.25,
 					"id": 3
 				},
 				{
-					"length": 0.333,
+					"length": 0.25,
 					"id": 4
 				},
 				{
-					"length": 0.333,
+					"length": 0.25,
 					"id": 3
 				},
 				{
-					"length": 0.333,
+					"length": 0.25,
 					"id": 5
+				}
+			]
+		},
+		{
+			"name": "upIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 3
+				}
+			]
+		},
+		{
+			"name": "left",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 6
+				},
+				{
+					"length": 0.25,
+					"id": 7
+				},
+				{
+					"length": 0.25,
+					"id": 6
+				},
+				{
+					"length": 0.25,
+					"id": 8
+				}
+			]
+		},
+		{
+			"name": "leftIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 6
+				}
+			]
+		},
+		{
+			"name": "right",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 9
+				},
+				{
+					"length": 0.25,
+					"id": 10
+				},
+				{
+					"length": 0.25,
+					"id": 9
+				},
+				{
+					"length": 0.25,
+					"id": 11
+				}
+			]
+		},
+		{
+			"name": "rightIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 9
 				}
 			]
 		}

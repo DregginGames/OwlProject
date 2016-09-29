@@ -1,0 +1,10 @@
+{
+	"displayName": "The Player",
+	"_tileset": "tileset.testplayer",
+	"_animationName": "animation.walk",
+	"_animationOffset": [0.0,0.5],
+	"stats": {
+		"movementSpeed": 1.0,
+		"maxMovementSpeed": 1.0
+	}
+}
