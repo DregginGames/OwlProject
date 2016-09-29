@@ -2,7 +2,9 @@
 	"displayName": "The Player",
 	"_tileset": "tileset.testplayer",
 	"_animationName": "animation.walk",
-	"_animationOffset": [0.0,0.5],
+	"_animationOffset": [0.0,0.0],
+	"_mapCollisionOffset": [0.0,-0.5],
+	"_mapCollisionSize": [0.2,0.2],
 	"stats": {
 		"movementSpeed": 1.0,
 		"maxMovementSpeed": 1.0

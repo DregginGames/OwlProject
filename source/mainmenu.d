@@ -58,6 +58,8 @@ class MainMenu : Base
                 m.addToWorld();
 
                 auto p = new UserPlayer("player.userplayer");
+                p.size=vec2(0.5,1.0);
+                p.sizeMode = p.SizeMode.rect;
                 auto c = new UserPlayerController();
                 c.setPlayer(p);
                 gameroot.addChild(p);
