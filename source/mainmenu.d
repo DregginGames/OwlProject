@@ -51,23 +51,26 @@ class MainMenu : Base
 
             event.on!(UiOnClickEvent,"e.element.name == \"newGameBtn\"")(delegate(UiOnClickEvent e) {
                 this.setDeleted();
-                
-                auto gameroot = getService!GameContainer("d2d.gameroot");
-                auto m = new Map("map.testmap");
-                gameroot.addChild(m);
-                m.addToWorld();
 
-                auto p = new UserPlayer("player.userplayer");
-                p.size=vec2(0.5,1.0);
-                p.sizeMode = p.SizeMode.rect;
-                auto c = new UserPlayerController();
-                c.setPlayer(p);
-                gameroot.addChild(p);
-                gameroot.addChild(c);
-                p.pos = vec2(1.5,0.0);
-                auto camera = new Camera(2.0);
-                p.addChild(camera); 
-                camera.positionMode = Entity.PositionMode.relative;
+                auto groot = getService!GameContainer("d2d.gameroot");
+                auto screen = new LoadingScreen("texture.test", function(GameContainer gameroot) {
+                    auto m = new Map("map.testmap");
+                    gameroot.addChild(m);
+                    m.addToWorld();
+
+                    auto p = new UserPlayer("player.userplayer");
+                    p.size=vec2(0.5,1.0);
+                    p.sizeMode = p.SizeMode.rect;
+                    auto c = new UserPlayerController();
+                    c.setPlayer(p);
+                    gameroot.addChild(p);
+                    gameroot.addChild(c);
+                    p.pos = vec2(1.5,0.0);
+                    auto camera = new Camera(2.0);
+                    p.addChild(camera); 
+                    camera.positionMode = Entity.PositionMode.relative;
+                });
+                groot.addChild(screen);
             });
 
             event.on!(UiOnClickEvent,"e.element.name == \"loadGameBtn\"")(delegate(UiOnClickEvent e) {
