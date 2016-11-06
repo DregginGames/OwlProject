@@ -1,0 +1,8 @@
+{
+	"texture": "texture.hyptosis.tile-art-batch-1",
+	"xdim": 30,
+	"ydim": 30,
+	"tilesize": [0.5,0.5],
+	"collide": [],
+	"nowalk": []
+}
