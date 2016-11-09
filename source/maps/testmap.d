@@ -19,7 +19,7 @@ class Testmap : Base, MapController
             auto m = new Music("music.intoTheMenu");
             addTarget.addChild(m);
             //addTarget.addChild(new NoSDLEventDebugger());
-            //m.play();
+            m.play();
         }
     }
     

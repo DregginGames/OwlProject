@@ -1,0 +1,8 @@
+{
+	"texture": "texture.tileset.land",
+	"xdim": 8,
+	"ydim": 8,
+	"tilesize": [0.5,0.5],
+	"collide": [],
+	"nowalk": [19]
+}
