@@ -10,6 +10,8 @@ class OverviewUi : Ui
     {
         super(name);
         _player = p;
+        auto box = cast(TextBox)getByName("dialogBox")[0];
+        box.hidden = box.paused = true;
     }
 
     override void postUpdate()
@@ -38,7 +40,11 @@ class OverviewUi : Ui
         if (_pendingLines.length==0) {
             box.text = "";
             _player.paused = false;
+            box.hidden = true; 
+            box.paused = true;
         } else {
+            box.hidden = false; 
+            box.paused = false;
             auto l = _pendingLines[0];
             string textline = l.line;
             if (l.src) {

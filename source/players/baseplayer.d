@@ -54,6 +54,13 @@ class BasePlayer : AnimatedPlayer!(BaseStats)
         fireEvent(new DialogEvent(l));
     }
 
+    void sayDialogLine(string[] lines, bool blocking=false)
+    {
+        foreach(line; lines) {
+            sayDialogLine(line,blocking);
+        }
+    }
+
     void sayDialogLine(string line, bool blocking=false)
     {
         DialogLine l;
