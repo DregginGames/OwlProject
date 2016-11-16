@@ -31,6 +31,66 @@
 			]
 		},
 		{
+			"name": "downLeft",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 0
+				},
+				{
+					"length": 0.25,
+					"id": 1
+				},
+				{
+					"length": 0.25,
+					"id": 0
+				},
+				{
+					"length": 0.25,
+					"id": 2
+				}
+			]
+		},
+		{
+			"name": "downLeftIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 0
+				}
+			]
+		},
+		{
+			"name": "downRight",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 0
+				},
+				{
+					"length": 0.25,
+					"id": 1
+				},
+				{
+					"length": 0.25,
+					"id": 0
+				},
+				{
+					"length": 0.25,
+					"id": 2
+				}
+			]
+		},
+		{
+			"name": "downRightIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 0
+				}
+			]
+		},
+		{
 			"name": "up",
 			"frames": [
 				{
@@ -53,6 +113,66 @@
 		},
 		{
 			"name": "upIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 3
+				}
+			]
+		},
+		{
+			"name": "upLeft",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 3
+				},
+				{
+					"length": 0.25,
+					"id": 4
+				},
+				{
+					"length": 0.25,
+					"id": 3
+				},
+				{
+					"length": 0.25,
+					"id": 5
+				}
+			]
+		},
+		{
+			"name": "upLeftIdle",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 3
+				}
+			]
+		},
+		{
+			"name": "upRight",
+			"frames": [
+				{
+					"length": 0.25,
+					"id": 3
+				},
+				{
+					"length": 0.25,
+					"id": 4
+				},
+				{
+					"length": 0.25,
+					"id": 3
+				},
+				{
+					"length": 0.25,
+					"id": 5
+				}
+			]
+		},
+		{
+			"name": "upRightIdle",
 			"frames": [
 				{
 					"length": 0.25,

@@ -1,0 +1,16 @@
+{
+	"displayName": "The Player",
+	"_tileset": "tileset.testplayer",
+	"_animationName": "animation.walk",
+	"_animationOffset": [0.0,0.0],
+	"_mapCollisionOffset": [0.0,-0.5],
+	"_mapCollisionSize": [0.2,0.2],
+	"stats": {
+		"movementSpeed": 2.0,
+		"maxMovementSpeed":2.0,
+		"energy": 100.0,
+		"maxEnergy": 100.0,
+		"health": 100.0,
+		"maxHealth": 100.0
+	}
+}

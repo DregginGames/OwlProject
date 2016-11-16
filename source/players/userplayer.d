@@ -5,14 +5,14 @@ import d2d.core.base;
 import d2d.core.event;
 import d2d.core.io;
 
-class PlayerStats : AbstractPlayerStatsClass
-{
-}
+import players.baseplayer;
 
-class UserPlayer : AnimatedPlayer!(PlayerStats)
+
+class UserPlayer : BasePlayer
 {
     this(string name) 
     {
+        registerAsService("owl.userplayer");
         super(name);
     }
 }
@@ -34,60 +34,58 @@ class UserPlayerController : Base, PlayerController
         if(_player is null) {
             return;
         }
-        
-        bool walk = _player.isMoving;
-        AbstractPlayer.Direction dir = _player.direction;
+
+        bool doesMove = _player.isMoving;
+        auto cam = getService!Camera("d2d.mainCamera");
 
         foreach(event; pollEvents())
         {
-            event.on!(KeyDownEvent)(delegate(KeyDownEvent e) {
-                switch(e.name) {
-                    case "moveUp":
-                        dir = AbstractPlayer.Direction.up;
-                        walk = true;
-                        break;
-                    case "moveDown":
-                        dir = AbstractPlayer.Direction.down;
-                        walk = true;
-                        break;
-                    case "moveLeft":
-                        dir = AbstractPlayer.Direction.left;
-                        walk = true;
-                        break;
-                    case "moveRight":
-                        dir = AbstractPlayer.Direction.right;
-                        walk = true;
-                        break;
-                    default: break;
+            if (doesMove) {
+                event.on!(MouseMotionEvent)(delegate(MouseMotionEvent e) {
+                    auto cam = getService!Camera("d2d.mainCamera");
+                    _player.turnTowards(cam.worldCursor.absolutePos);
+                });
+            }
+            if (!Ui.isAnythingHovered()) {
+                event.on!(MouseButtonDownEvent)(delegate(MouseButtonDownEvent e) {
+                    import d2d.game.simple.camera;
+                
+                    //_player.engageNav(cam.worldCursor.absolutePos,0.1,vec2(.5,.5)); // not using this kind of nav
+                    _player.turnTowards(cam.worldCursor.absolutePos);
+                    if (e.button == e.MouseButtonId.MouseLeft) {
+                        _player.isMoving = true;
+                    }   
+                    else if (e.button == e.MouseButtonId.MouseRight) {
+                        isShootingSomething = true;
+                    }
+                });
+            }
+            event.on!(MouseButtonUpEvent)(delegate(MouseButtonUpEvent e) {
+                if (e.button == e.MouseButtonId.MouseLeft) {
+                    _player.isMoving = false;
+                }       
+                else if (e.button == e.MouseButtonId.MouseRight) {
+                    isShootingSomething = false;
                 }
             });
-            event.on!(KeyUpEvent)(delegate(KeyUpEvent e) {
-                switch(e.name) {
-                    case "moveUp":
-                        walk &= dir != AbstractPlayer.Direction.up;
-                        break;
-                    case "moveDown":
-                        walk &= dir != AbstractPlayer.Direction.down;
-                        break;
-                    case "moveLeft":
-                        walk &= dir != AbstractPlayer.Direction.left;
-                        break;
-                    case "moveRight":
-                        walk &= dir != AbstractPlayer.Direction.right;
-                        break;
-                    default:
-                        break;
-                }
-            });
+
+        }
+        
+        if (isShootingSomething&&shotDelayTime <= curtimeS) {
+            Sprite s = new Sprite("texture.test");
+            s.size = vec2(0.1,0.1);
+            s.positionMode = s.PositionMode.parentBound;
+            Projectile p = new Projectile();
+            p.addChild(s);
+            p.emitTowards(_player,cam.worldCursor.absolutePos,4.0,0.5);
+            shotDelayTime = curtimeS+0.01;
+            this.addChild(p);
         }
 
-        if(walk!=_player.isMoving) {
-            _player.isMoving = walk;
-        }
-        if(dir!=_player.direction) {
-            _player.direction = dir;
-        }   
     }
 private:
     UserPlayer _player;
+    bool isShootingSomething = false;
+    double shotDelayTime = 0;
+    
 }

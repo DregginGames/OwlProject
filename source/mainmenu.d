@@ -6,6 +6,7 @@ import d2d.core.base;
 import d2d.engine;
 
 import players.userplayer;
+import ui.overview;
 
 class MainMenu : Base
 {
@@ -16,7 +17,7 @@ class MainMenu : Base
 
         auto ui = new Ui("ui.menu");
         
-        auto title = new Label("Dragon2D Demogame");
+        auto title = new Label("OwlProject");
         title.pos = vec2(0.3,0.2);
         title.size = vec2(0.5,0.08);
         ui.addChild(title);
@@ -50,27 +51,7 @@ class MainMenu : Base
             });
 
             event.on!(UiOnClickEvent,"e.element.name == \"newGameBtn\"")(delegate(UiOnClickEvent e) {
-                this.setDeleted();
-
-                auto groot = getService!GameContainer("d2d.gameroot");
-                auto screen = new LoadingScreen("texture.test", function(GameContainer gameroot) {
-                    auto m = new Map("map.testmap");
-                    gameroot.addChild(m);
-                    m.addToWorld();
-
-                    auto p = new UserPlayer("player.userplayer");
-                    p.size=vec2(0.5,1.0);
-                    p.sizeMode = p.SizeMode.rect;
-                    auto c = new UserPlayerController();
-                    c.setPlayer(p);
-                    gameroot.addChild(p);
-                    gameroot.addChild(c);
-                    p.pos = vec2(1.5,0.0);
-                    auto camera = new Camera(2.0);
-                    p.addChild(camera); 
-                    camera.positionMode = Entity.PositionMode.relative;
-                });
-                groot.addChild(screen);
+                createNewGame();
             });
 
             event.on!(UiOnClickEvent,"e.element.name == \"loadGameBtn\"")(delegate(UiOnClickEvent e) {
@@ -79,4 +60,44 @@ class MainMenu : Base
         }
     }
     
+
+    void createNewGame()
+    {
+        this.setDeleted();
+
+        auto groot = getService!GameContainer("d2d.gameroot");
+        auto screen = new LoadingScreen("texture.test", delegate(GameContainer gameroot) {
+            auto m = new Map("map.chapter0.introgym");
+            gameroot.addChild(m);
+            m.addToWorld();
+
+            /// add the protagonist
+            auto p = new UserPlayer("player.protagonist");
+            p.size=vec2(0.5,1.0);
+            p.pos=vec2(0.0,1.0);
+            p.sizeMode = p.SizeMode.rect;
+            auto c = new UserPlayerController();
+            c.setPlayer(p);
+            gameroot.addChild(p);
+            gameroot.addChild(c);
+            p.pos = vec2(1.5,0.0);
+            auto camera = new Camera(3.0,true);
+            p.addChild(camera); 
+            camera.positionMode = Entity.PositionMode.relative;
+            openUi(gameroot,p);
+        });
+        groot.addChild(screen);
+    }
+
+    static void openUi(GameContainer gameroot, UserPlayer p)
+    {
+        OverviewUi ui = new OverviewUi("ui.overview",p);
+        
+        //Box dialogBox = new Box;
+        //dialogBox.pos = vec2(0.0,0.9);
+        //dialogBox.size = vec2(0.3,0.3);
+        //ui.addChild(dialogBox);
+        ui.store();
+        gameroot.addChild(ui);
+    }
 }
