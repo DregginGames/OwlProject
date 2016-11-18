@@ -1,5 +1,6 @@
 {
 	"displayName": "Pete Woggly",
+	"size": [0.5,1.0],
 	"_tileset": "tileset.testplayer",
 	"_animationName": "animation.walk",
 	"_animationOffset": [0.0,0.0],

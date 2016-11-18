@@ -8,6 +8,7 @@ import derelict.sdl2.mixer;
 import d2d.core.base;
 import d2d.core.save;
 import d2d.game;
+import d2d.util;
 
 import players.baseplayer;
 import players.userplayer;
@@ -27,9 +28,7 @@ class IntroGym : Base, MapController
             //addTarget.addChild(m);
             //m.play();
             _teacher = new BasePlayer("player.teacher");
-            _teacher.size=vec2(0.5,1.0);
             _teacher.pos=vec2(0.0,-1.0);
-            _teacher.sizeMode = _teacher.SizeMode.rect;
             addTarget.addChild(_teacher);
             
             _teacherSpeachTrigger = new Trigger!(UserPlayer)(AbstractTrigger.TriggerMode.once);
@@ -37,6 +36,7 @@ class IntroGym : Base, MapController
             _teacherSpeachTrigger.sizeMode = _teacherSpeachTrigger.SizeMode.radius;
             _teacherSpeachTrigger.positionMode = Entity.PositionMode.parentBound;
             _teacher.addChild(_teacherSpeachTrigger);
+            _teacher.sayDialogLine(Textlines.get("text.teacher","greeting"),true);
         }
     }
 
@@ -45,9 +45,7 @@ class IntroGym : Base, MapController
         foreach(event; pollEvents()) {
             event.on!(TriggerEvent)(delegate(TriggerEvent e) {
                 if(e.trigger == _teacherSpeachTrigger) {
-                    _teacher.sayDialogLine("Greetings!",true);
-                    _teacher.sayDialogLine("I am your Teacher, and today we will learn how to use Tech.",true);
-                    _teacher.sayDialogLine("If THE PLAYER would be so nice to move into the middle of the room?",true);
+                    _teacher.sayDialogLine(Textlines.get("text.teacher","greeting"),true);
                 }
             });
         }

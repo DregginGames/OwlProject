@@ -1,0 +1,8 @@
+{
+	"texture": "texture.tileset.helperTiles",
+	"xdim": 8,
+	"ydim": 8,
+	"tilesize": [0.5,0.5],
+	"collide": [32,34,36,38,48,50,52,54],
+	"nowalk": [16,18,20,22,48,50,52,54]
+}

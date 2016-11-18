@@ -5,6 +5,8 @@ import d2d.core.base;
 import d2d.core.event;
 import d2d.core.io;
 
+import d2d.util;
+
 import players.baseplayer;
 
 
@@ -14,6 +16,7 @@ class UserPlayer : BasePlayer
     {
         registerAsService("owl.userplayer");
         super(name);
+        Textlines.vars["player"] = this.displayName;
     }
 }
 
